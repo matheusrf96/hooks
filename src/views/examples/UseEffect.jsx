@@ -10,13 +10,22 @@ const calcFactorial = (n) => {
     return calcFactorial(n - 1) * n
 }
 
+const checkIfIsEven = (n) => {
+    return (n % 2 === 1) ? false : true
+}
+
 const UseEffect = (props) => {
     const [number, setNumber] = useState(1)
     const [factorial, setFactorial] = useState(1)
+    const [isEven, setIsEven] = useState(false)
 
     useEffect(() => {
         setFactorial(calcFactorial(number))
     }, [number])
+
+    useEffect(() => {
+        setIsEven(checkIfIsEven(factorial))
+    }, [factorial])
 
     return (
         <div className="UseEffect">
@@ -41,7 +50,16 @@ const UseEffect = (props) => {
             </div>
 
             <SectionTitle title="#02" />
-
+            <div className="center">
+                <div>
+                    <span className="text">O fatorial é: </span>
+                    <span className="text red">{
+                        factorial !== -1
+                            ? isEven ? 'Par' : 'Ímpar'
+                            : 'Inválido'
+                    }</span>
+                </div>
+            </div>
         </div>
     )
 }
