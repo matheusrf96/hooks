@@ -4,7 +4,10 @@ import SectionTitle from '../../components/layout/PageTitle'
 
 const UseState = (props) => {
     const defaultValue = 0
+    const defaultName = ""
+
     const [count, setCount] = useState(defaultValue)
+    const [name, setName] = useState(defaultName)
 
     return (
         <div className="UseState">
@@ -26,6 +29,15 @@ const UseState = (props) => {
             </div>
 
             <SectionTitle title="#02" />
+            <div className="center">
+                <span className="text">{ name }</span>
+                <input
+                    type="text"
+                    className="input"
+                    value={ name }
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </div>
         </div>
     )
 }
