@@ -2,6 +2,14 @@ import React, { useReducer, useState } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
 import { initialState, reducer } from '../../store'
+import {
+    numberAdd2,
+    login,
+    sevenfold,
+    oneQuarter,
+    toInt,
+    calcNum,
+} from '../../store/actions'
 
 const UseReducer = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -30,14 +38,12 @@ const UseReducer = (props) => {
                     />
 
                     <span className="text">
-                        <button className="btn"
-                            onClick={ () => dispatch({ type: 'login', payload: 'matheus' }) }>Login</button>
-                        <button className="btn" onClick={ () => dispatch({ type: 'numberAdd2' }) }>+2</button>
-                        <button className="btn" onClick={ () => dispatch({ type: 'sevenfold' }) }>*7</button>
-                        <button className="btn" onClick={ () => dispatch({ type: 'oneQuarter' }) }>/25</button>
-                        <button className="btn" onClick={ () => dispatch({ type: 'toInt' }) }>Int</button>
-                        <button className="btn"
-                            onClick={ () => dispatch({ type: 'calcNum', payload: number }) }>Add { number }</button>
+                        <button className="btn" onClick={ () => login(dispatch, 'matheus') }>Login</button>
+                        <button className="btn" onClick={ () => numberAdd2(dispatch) }>+2</button>
+                        <button className="btn" onClick={ () => sevenfold(dispatch) }>*7</button>
+                        <button className="btn" onClick={ () => oneQuarter(dispatch) }>/25</button>
+                        <button className="btn" onClick={ () => toInt(dispatch) }>Int</button>
+                        <button className="btn" onClick={ () => calcNum(dispatch, number) }>Add { number }</button>
                     </span>
                 </div>
             </div>
