@@ -54,12 +54,16 @@ const UseReducer = (props) => {
                         value={ number }
                     />
 
-                    <button className="btn" onClick={ () => dispatch({ type: 'login', payload: 'matheus' }) }>Login</button>
-                    <button className="btn" onClick={ () => dispatch({ type: 'numberAdd2' }) }>+2</button>
-                    <button className="btn" onClick={ () => dispatch({ type: 'sevenfold' }) }>*7</button>
-                    <button className="btn" onClick={ () => dispatch({ type: 'oneQuarter' }) }>/25</button>
-                    <button className="btn" onClick={ () => dispatch({ type: 'toInt' }) }>Int</button>
-                    <button className="btn" onClick={ () => dispatch({ type: 'calcNum', payload: number }) }>Add { number }</button>
+                    <span className="text">
+                        <button className="btn"
+                            onClick={ () => dispatch({ type: 'login', payload: 'matheus' }) }>Login</button>
+                        <button className="btn" onClick={ () => dispatch({ type: 'numberAdd2' }) }>+2</button>
+                        <button className="btn" onClick={ () => dispatch({ type: 'sevenfold' }) }>*7</button>
+                        <button className="btn" onClick={ () => dispatch({ type: 'oneQuarter' }) }>/25</button>
+                        <button className="btn" onClick={ () => dispatch({ type: 'toInt' }) }>Int</button>
+                        <button className="btn"
+                            onClick={ () => dispatch({ type: 'calcNum', payload: number }) }>Add { number }</button>
+                    </span>
                 </div>
             </div>
         </div>
