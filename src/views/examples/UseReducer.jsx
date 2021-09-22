@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
 
@@ -15,6 +15,14 @@ const reducer = (state, action) => {
             return { ...state, number: state.number + 2 }
         case 'login':
             return { ...state, user: { name: action.payload }}
+        case 'sevenfold':
+            return { ...state, number: state.number * 7 }
+        case 'oneQuarter':
+            return { ...state, number: state.number / 25 }
+        case 'toInt':
+            return { ...state, number: parseInt(state.number) }
+        case 'calcNum':
+            return { ...state, number: parseFloat(state.number) + parseInt(action.payload) }
         default:
             return state
     }
@@ -22,6 +30,7 @@ const reducer = (state, action) => {
 
 const UseReducer = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [number, setNumber] = useState(0)
 
     return (
         <div className="UseReducer">
@@ -38,8 +47,19 @@ const UseReducer = (props) => {
                 <span className="text">{ state.number }</span>
 
                 <div className="center">
+                    <input
+                        type="number"
+                        className="input"
+                        onChange={(e) => setNumber(e.target.value) }
+                        value={ number }
+                    />
+
                     <button className="btn" onClick={ () => dispatch({ type: 'login', payload: 'matheus' }) }>Login</button>
                     <button className="btn" onClick={ () => dispatch({ type: 'numberAdd2' }) }>+2</button>
+                    <button className="btn" onClick={ () => dispatch({ type: 'sevenfold' }) }>*7</button>
+                    <button className="btn" onClick={ () => dispatch({ type: 'oneQuarter' }) }>/25</button>
+                    <button className="btn" onClick={ () => dispatch({ type: 'toInt' }) }>Int</button>
+                    <button className="btn" onClick={ () => dispatch({ type: 'calcNum', payload: number }) }>Add { number }</button>
                 </div>
             </div>
         </div>
